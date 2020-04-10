@@ -6,5 +6,5 @@ The app is used to find a which balances add up to the target balance. (Basicall
 2. Open Number Adder Inator Inator 2000.exe
 
 ### Bugs
-1. Does not currently support multiple subsets that may add up to the target. The app will just higlight all
+1. Does not currently support multiple subsets that may add up to the target. The app will just highlight all
 the numbers that are included in any subset that adds up to the target. Support will be added.
