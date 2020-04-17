@@ -11,6 +11,7 @@ namespace Number_Adder_Inator_Inator_2000 {
     public partial class AdderInator : Form {
         private string input;
         private bool firstClick;
+        private bool settingsToggle;
         private List<List<double>> sums;
 
         public AdderInator() {
@@ -23,6 +24,10 @@ namespace Number_Adder_Inator_Inator_2000 {
 
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(keyDownHandler);
+
+            panelCover.Hide();
+            panelSettings.Hide();
+            this.settingsToggle = true;
         }
 
         private void buttonZero_Click(object sender, EventArgs e) {
@@ -104,6 +109,8 @@ namespace Number_Adder_Inator_Inator_2000 {
             } else {
                 MessageBox.Show("Please enter a target balance");
             }
+
+            checkValues();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e) {
@@ -111,7 +118,7 @@ namespace Number_Adder_Inator_Inator_2000 {
                 this.input = "0";
                 labelInputNumber.Text = this.input;
                 this.firstClick = true;
-            } else if (Double.Parse(this.input) != 0) {
+            } else if (Double.Parse(this.input) != 0 || this.input.Contains(".")) {
                 this.input = this.input.Substring(0, this.input.Length - 1);
                 labelInputNumber.Text = input;
             }
@@ -141,12 +148,6 @@ namespace Number_Adder_Inator_Inator_2000 {
         private void listViewValues_MouseClick(object sender, MouseEventArgs e) {
             if (e.Button == MouseButtons.Right) {
                 if (listViewValues.FocusedItem.Bounds.Contains(e.Location)) {
-                    for (int i = 0; i < this.sums.Count; i++) {
-                        if (this.sums[i].Contains(Double.Parse(listViewValues.FocusedItem.Text))) {
-                            clearColor();
-                        }
-                    }
-
                     listViewValues.FocusedItem.Remove();
                 }
             }
@@ -157,7 +158,6 @@ namespace Number_Adder_Inator_Inator_2000 {
             List<double> list = listViewValues.Items.Cast<ListViewItem>()
             .Select(item => Double.Parse(item.Text)).ToList();
             sum(list, Double.Parse(textBoxTargetBalance.Text), new List<double>());
-            assignColor();
         }
 
         private void sum(List<double> list, double target, List<double> partial) {
@@ -187,28 +187,20 @@ namespace Number_Adder_Inator_Inator_2000 {
             }
         }
 
-        private void assignColor() {
-            clearColor();
-            for (int i = 0; i < this.sums.Count; i++) {
-                for (int j = 0; j < this.sums[i].Count; j++) {
-                    for (int k = 0; k < listViewValues.Items.Count; k++) {
-                        double listVal = Double.Parse(listViewValues.Items[k].Text);
-                        if (this.sums[i][j] == listVal) {
-                            listViewValues.Items[k].BackColor = Color.LightGreen;
-                        }
-                    }
+        private void checkValues() {
+            treeViewValues.Nodes.Clear();
+            for (int i = 0; i < this.sums.Count(); i++) {
+                treeViewValues.Nodes.Add("Set " + (i + 1));
+                for (int j = 0; j < this.sums[i].Count(); j++) {
+                    treeViewValues.Nodes[i].Nodes.Add(this.sums[i][j] + "");
+                    treeViewValues.ExpandAll();
                 }
-            }
-        }
-
-        private void clearColor() {
-            for (int k = 0; k < listViewValues.Items.Count; k++) {
-                listViewValues.Items[k].BackColor = Color.White;
             }
         }
 
         private void buttonClearList_Click(object sender, EventArgs e) {
             listViewValues.Clear();
+            treeViewValues.Nodes.Clear();
         }
 
         private void AdderInator_MouseDown(object sender, MouseEventArgs e) {
@@ -261,6 +253,18 @@ namespace Number_Adder_Inator_Inator_2000 {
 
             if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1) {
                 e.Handled = true;
+            }
+        }
+
+        private void buttonMenu_Click(object sender, EventArgs e) {
+            if (!this.settingsToggle) {
+                panelSettings.Hide();
+                panelCover.Hide();
+                this.settingsToggle = true;
+            } else {
+                panelSettings.Show();
+                panelCover.Show();
+                this.settingsToggle = false;
             }
         }
     }

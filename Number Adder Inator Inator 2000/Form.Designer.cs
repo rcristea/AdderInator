@@ -44,13 +44,17 @@
             this.listViewValues = new System.Windows.Forms.ListView();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonClearList = new System.Windows.Forms.Button();
+            this.buttonMenu = new System.Windows.Forms.Button();
+            this.panelSettings = new System.Windows.Forms.Panel();
+            this.panelCover = new System.Windows.Forms.Panel();
+            this.treeViewValues = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // labelTargetBalance
             // 
             this.labelTargetBalance.AutoSize = true;
             this.labelTargetBalance.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTargetBalance.Location = new System.Drawing.Point(16, 15);
+            this.labelTargetBalance.Location = new System.Drawing.Point(35, 22);
             this.labelTargetBalance.Name = "labelTargetBalance";
             this.labelTargetBalance.Size = new System.Drawing.Size(112, 21);
             this.labelTargetBalance.TabIndex = 0;
@@ -59,9 +63,9 @@
             // textBoxTargetBalance
             // 
             this.textBoxTargetBalance.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTargetBalance.Location = new System.Drawing.Point(134, 15);
+            this.textBoxTargetBalance.Location = new System.Drawing.Point(153, 22);
             this.textBoxTargetBalance.Name = "textBoxTargetBalance";
-            this.textBoxTargetBalance.Size = new System.Drawing.Size(196, 25);
+            this.textBoxTargetBalance.Size = new System.Drawing.Size(177, 25);
             this.textBoxTargetBalance.TabIndex = 1;
             this.textBoxTargetBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTargetBalance_KeyPress);
             // 
@@ -237,9 +241,9 @@
             this.listViewValues.HideSelection = false;
             this.listViewValues.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.listViewValues.LabelWrap = false;
-            this.listViewValues.Location = new System.Drawing.Point(336, 12);
+            this.listViewValues.Location = new System.Drawing.Point(336, 22);
             this.listViewValues.Name = "listViewValues";
-            this.listViewValues.Size = new System.Drawing.Size(155, 317);
+            this.listViewValues.Size = new System.Drawing.Size(155, 307);
             this.listViewValues.TabIndex = 17;
             this.listViewValues.TileSize = new System.Drawing.Size(130, 18);
             this.listViewValues.UseCompatibleStateImageBehavior = false;
@@ -268,14 +272,51 @@
             this.buttonClearList.UseVisualStyleBackColor = true;
             this.buttonClearList.Click += new System.EventHandler(this.buttonClearList_Click);
             // 
+            // buttonMenu
+            // 
+            this.buttonMenu.BackColor = System.Drawing.Color.Transparent;
+            this.buttonMenu.FlatAppearance.BorderSize = 0;
+            this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMenu.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMenu.Location = new System.Drawing.Point(-2, -7);
+            this.buttonMenu.Name = "buttonMenu";
+            this.buttonMenu.Size = new System.Drawing.Size(31, 37);
+            this.buttonMenu.TabIndex = 20;
+            this.buttonMenu.Text = "≡";
+            this.buttonMenu.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonMenu.UseVisualStyleBackColor = false;
+            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
+            // 
+            // panelSettings
+            // 
+            this.panelSettings.Location = new System.Drawing.Point(0, 0);
+            this.panelSettings.Name = "panelSettings";
+            this.panelSettings.Size = new System.Drawing.Size(479, 353);
+            this.panelSettings.TabIndex = 21;
+            // 
+            // panelCover
+            // 
+            this.panelCover.Location = new System.Drawing.Point(39, 22);
+            this.panelCover.Name = "panelCover";
+            this.panelCover.Size = new System.Drawing.Size(452, 32);
+            this.panelCover.TabIndex = 22;
+            // 
+            // treeViewValues
+            // 
+            this.treeViewValues.Location = new System.Drawing.Point(497, 22);
+            this.treeViewValues.Name = "treeViewValues";
+            this.treeViewValues.Size = new System.Drawing.Size(152, 384);
+            this.treeViewValues.TabIndex = 0;
+            // 
             // AdderInator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 413);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(664, 413);
+            this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.buttonClearList);
             this.Controls.Add(this.buttonClear);
-            this.Controls.Add(this.listViewValues);
             this.Controls.Add(this.labelInputNumber);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonAdd);
@@ -293,6 +334,10 @@
             this.Controls.Add(this.buttonSeven);
             this.Controls.Add(this.textBoxTargetBalance);
             this.Controls.Add(this.labelTargetBalance);
+            this.Controls.Add(this.treeViewValues);
+            this.Controls.Add(this.listViewValues);
+            this.Controls.Add(this.panelSettings);
+            this.Controls.Add(this.panelCover);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -326,6 +371,10 @@
         private System.Windows.Forms.ListView listViewValues;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonClearList;
+        private System.Windows.Forms.Button buttonMenu;
+        private System.Windows.Forms.Panel panelSettings;
+        private System.Windows.Forms.Panel panelCover;
+        private System.Windows.Forms.TreeView treeViewValues;
     }
 }
 
