@@ -9,3 +9,4 @@ The app is used to find a which balances add up to the target balance. (Basicall
 ### Bugs
 1. Does not currently support multiple subsets that may add up to the target. The app will just highlight all
 the numbers that are included in any subset that adds up to the target. Support will be added.
+2. Inefficient and lags when many numbers are added
